@@ -7,9 +7,9 @@ This is simply for demo & learning purposes.
 ## Usage
 
 1. Start the server: `ruby server.rb`
-2. Open the browser and go to `http://localhost:2000/`
+2. Open the browser and go to `http://localhost:2000/` or `curl -v http://localhost:2000`
 3. Add a new file to `view/newfile.html`
-4. Render the file in the browser via `http://localhost:2000/newfile.html`
+4. Render the file in the browser via `http://localhost:2000/newfile.html` or `curl -v http://localhost:2000/newfile.html`
 
 
 ## Why is it not secure?
