@@ -1,9 +1,5 @@
-# NOTE: This thing isn't secure.
-# It's just for demo purposes.
-# Don't use this in production.
-# It's not even close to secure.
-# See why: curl -v http://localhost:2000/../server.rb --path-as-is 
-# The above command will literally return the contents of server.rb - that's bad. 
+# NOTE: This thing isn't secure. It's just for demo purposes.
+# Don't use this in production. It's not even close to secure. See README.md
 
 require "socket"
 require "active_support/all"
@@ -24,6 +20,10 @@ class Request
     @path, @query = @path.split("?")
     @headers = parse_headers(lines[1...index])
     @body = lines[index + 1..-1].join
+
+    # Log Requests
+    puts "<- #{@method} #{@path}"
+  end
   end
   
   def parse_headers(lines)
@@ -53,6 +53,9 @@ class Response
     client.print "Content-Length: #{@body.length}\r\n"
     client.print "\r\n"
     client.print "#{@body}\r\n" if @body.present?
+
+    puts "-> #{@code}"
+  end
   end
 end
 
